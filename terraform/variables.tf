@@ -1,4 +1,4 @@
-variable "project" { }
+variable "project" {}
 
 variable "region" {
   description = "Project Region"
@@ -9,3 +9,5 @@ variable "zone" {
   description = "Zone"
   default     = "australia-southeast2-a"
 }
+
+variable "public_key_path" {}
