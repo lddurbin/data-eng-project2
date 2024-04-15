@@ -41,4 +41,10 @@ Now we can create the infrastructure:
 
 `terraform apply`
 
-To test your connection to the newly-created VM, run `./connect.sh`.
+This may take a few minutes, but it will do several things:
+* Create a new VM in GCP
+* Install Anaconda
+* Install Docker
+* Clone this GitHub repository
+
+To test your connection to the newly-created VM, run `./connect.sh`. In the VM's console, you can run `ls` to check that the data-eng-project2 directory is listed. Type 'exit' to exit the VM.

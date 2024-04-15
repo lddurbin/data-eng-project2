@@ -47,7 +47,8 @@ resource "google_compute_instance" "vm_instance" {
       "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
       "sudo apt-get update",
       "sudo apt-get install -y docker-ce",
-      "sudo usermod -aG docker $USER"
+      "sudo usermod -aG docker $USER",
+      "git clone https://github.com/lddurbin/data-eng-project2.git"
     ]
 
     connection {
