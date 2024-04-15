@@ -28,7 +28,9 @@ Now you're ready to generate a SSH key, which we'll use to connect to our VM aft
 
 Don't bother setting a password when it asks.
 
-Finally, we can run our Terraform script. First we'll need to download the privoders defined in our configuration:
+Finally, we can run our Terraform script, so `cd` into the terraform directory to proceed.
+
+First we'll need to download the privoders defined in our configuration:
 
 `terraform init`
 
