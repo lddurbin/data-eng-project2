@@ -37,19 +37,7 @@ resource "google_compute_instance" "vm_instance" {
    provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
-      "sudo apt-get install -y wget",
-      "wget -O ~/anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh",
-      "bash ~/anaconda.sh -b -p $HOME/anaconda3",
-      "export PATH=\"$HOME/anaconda3/bin:$PATH\"",
-      "conda init",
-      "sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common",
-      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
-      "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
-      "sudo apt-get update",
-      "sudo apt-get install -y docker-ce",
-      "sudo usermod -aG docker $USER",
-      "sudo curl -L \"https://github.com/docker/compose/releases/download/2.26.1/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
-      "sudo chmod +x /usr/local/bin/docker-compose",
+      "docker pull mageai/mageai:latest",
       "git clone https://github.com/lddurbin/data-eng-project2.git"
     ]
 
