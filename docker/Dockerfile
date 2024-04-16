@@ -19,11 +19,15 @@ FROM alpine:latest
 # Copy the Mage binary from the builder stage
 COPY --from=builder /go/bin/mage /usr/local/bin
 
-# Install R and other dependencies required for your R environment
-RUN apk add --no-cache R R-dev curl-dev openssl-dev g++ gcc libxml2-dev libgit2-dev curl
+# Start from the official R base image
+FROM r-base:latest
 
-# Install R packages if needed right away
-RUN R -e "install.packages(c('bigrquery', 'httr', 'dplyr', 'ggplot2', 'lubridate', 'tidyr', 'janeaustenr', 'tidytext'), repos='https://cran.rstudio.com/')"
+# Install system dependencies required by R and renv
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -32,7 +36,9 @@ WORKDIR /app
 COPY ./r /app/r
 COPY ./mage /app/mage
 
-# Set environment variables or perform other configuration
+# Install renv and restore packages
+RUN Rscript -e "install.packages('renv')"
+RUN cd /r && Rscript -e "renv::restore()"
 
 # Command to run on container start (can be overridden by Docker run command)
 # CMD [ "mage", "-v" ]
