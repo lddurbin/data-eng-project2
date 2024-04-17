@@ -49,3 +49,20 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 }
+
+
+resource "google_storage_bucket" "demo-bucket" {
+  name          = "splendid_melancholy_4532"
+  location      = var.region
+  force_destroy = true
+
+
+  lifecycle_rule {
+    condition {
+      age = 1
+    }
+    action {
+      type = "AbortIncompleteMultipartUpload"
+    }
+  }
+}

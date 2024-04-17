@@ -1,1 +1,3 @@
 .Rproj.user
+*.csv
+.DS_Store
