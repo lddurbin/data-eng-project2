@@ -56,7 +56,6 @@ resource "google_storage_bucket" "demo-bucket" {
   location      = var.region
   force_destroy = true
 
-
   lifecycle_rule {
     condition {
       age = 1
@@ -65,4 +64,10 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id = "met_museum_objects_sample"
+  location   = var.bq_location
 }

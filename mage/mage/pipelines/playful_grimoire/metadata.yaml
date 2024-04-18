@@ -20,6 +20,7 @@ blocks:
   configuration: {}
   downstream_blocks:
   - gcs
+  - bq
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -48,6 +49,22 @@ blocks:
   upstream_blocks:
   - format_dates
   uuid: gcs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: bq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - format_dates
+  uuid: bq
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}

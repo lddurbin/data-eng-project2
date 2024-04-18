@@ -10,6 +10,11 @@ variable "zone" {
   default     = "australia-southeast2-a"
 }
 
+variable "bq_location" {
+  description = "Location"
+  default     = "australia-southeast2"
+}
+
 variable "public_key_path" {}
 
 variable "private_key_path" {}
