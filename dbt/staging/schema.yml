@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: centered-center-420605
+    schema: met_museum
+
+      # loaded_at_field: record_loaded_at
+    tables:
+      - name: met_objects
