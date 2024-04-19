@@ -6,6 +6,7 @@
 
 with source as (
     select * from {{ source('staging','met_objects') }}
+    where accession_year is not null
 ),
 
 renamed as (

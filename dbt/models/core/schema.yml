@@ -13,5 +13,35 @@ models:
         description: Brief professional biography of the Director
       - name: term_start
         description: The date when the Director's tenure began, anchored to the 1st of January of that year.
-      - name: term_end
+      - name: term_end_date
         description: The date when the Director's tenure ended, anchored to the 1st of January of that year.
+
+  - name: fact_objects
+    description: >
+      List of objects where the accession date is associated with the tenure of each Director.
+      columns:
+          - name: id
+            description: Identifying number for each artwork (unique, can be used as key field)
+            tests:
+                - unique:
+                    severity: warn
+                - not_null:
+                    severity: warn
+          - name: department
+            description: Indicates The Met's curatorial department responsible for the artwork
+          - name: accession_year
+            description: Year the artwork was acquired.
+          - name: culture
+            description: Information about the culture, or people from which an object was created
+          - name: classification
+            description: General term describing the artwork type.
+          - name: name
+            description: The name of the Director
+          - name: term
+            description: The period  of the Director's tenure
+          - name: notes
+            description: Brief professional biography of the Director
+          - name: term_start
+            description: The date when the Director's tenure began, anchored to the 1st of January of that year.
+          - name: term_end
+            description: The date when the Director's tenure ended, anchored to the 1st of January of that year.
