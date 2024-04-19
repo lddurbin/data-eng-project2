@@ -52,7 +52,7 @@ resource "google_compute_instance" "vm_instance" {
 
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "splendid_melancholy_4532"
+  name          = var.bucket_name
   location      = var.region
   force_destroy = true
 

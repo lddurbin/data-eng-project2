@@ -18,3 +18,5 @@ variable "bq_location" {
 variable "public_key_path" {}
 
 variable "private_key_path" {}
+
+variable "bucket_name" {}
