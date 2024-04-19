@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: staging
+    database: centered-center-420605
+    schema: met_museum
+    tables:
+      - name: met_objects
+
+models:
+    - name: stg_objects
+      description: >
+        The Metropolitan Museum of Art presents over 5,000 years of art from around the world for everyone to experience and enjoy.
+        The Museum lives in two iconic sites in New York City—The Met Fifth Avenue and The Met Cloisters. Millions of people also take part in The Met experience online.
+        Since it was founded in 1870, The Met has always aspired to be more than a treasury of rare and beautiful objects.
+        Every day, art comes alive in the Museum's galleries and through its exhibitions and events, revealing both new ideas and unexpected connections across time and across cultures.
+        The Metropolitan Museum of Art provides select datasets of information on more than 470,000 artworks in its Collection for unrestricted commercial and noncommercial use. 
+        To the extent possible under law, The Metropolitan Museum of Art has waived all copyright and related or neighboring rights to this dataset using Creative Commons Zero. 
+      columns:
+          - name: id
+            description: Identifying number for each artwork (unique, can be used as key field)
+            tests:
+                - unique:
+                    severity: warn
+                - not_null:
+                    severity: warn
+          - name: department
+            description: Indicates The Met's curatorial department responsible for the artwork
+          - name: accession_year
+            description: Year the artwork was acquired.
+          - name: culture
+            description: Information about the culture, or people from which an object was created
+          - name: classification
+            description: General term describing the artwork type.
