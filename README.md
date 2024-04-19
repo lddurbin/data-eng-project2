@@ -50,9 +50,9 @@ Now we can create the infrastructure:
 `terraform apply`
 
 This may take a few minutes, but it will do several things:
-* Create a new VM in GCP
-* Install Mage through Docker
-* Clone this GitHub repository
+* Create a new VM in GCP and...
+  * Install Mage through Docker
+  * Clone this GitHub repository
 * Create a Google Cloud Storage bucket
 * Create a BigQuery dataset called "met_museum"
 
