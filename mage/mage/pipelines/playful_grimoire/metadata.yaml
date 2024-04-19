@@ -3,7 +3,7 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - format_dates
+  - prep_objects
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -19,20 +19,54 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - gcs
-  - bq
+  - prep_directors
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: r
-  name: format_dates
+  name: met_directors
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: met_directors
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - objects_table
+  - gcs_objects
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: prep_objects
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - metmuseumobjects
-  uuid: format_dates
+  uuid: prep_objects
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - gcs_directors
+  - directors_csv
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: prep_directors
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - met_directors
+  uuid: prep_directors
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -41,14 +75,75 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: r
-  name: gcs
+  name: gcs_objects
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - format_dates
-  uuid: gcs
+  - prep_objects
+  uuid: gcs_objects
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    data_provider_schema: met_test
+    export_write_policy: append
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: gcs_directors
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - prep_directors
+  uuid: gcs_directors
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    data_provider_schema: met_test
+    export_write_policy: append
+  downstream_blocks:
+  - bqr_objects
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: objects_table
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - prep_objects
+  uuid: objects_table
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    data_provider_schema: met_museum
+    export_write_policy: append
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: r
+  name: bqr_objects
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - objects_table
+  uuid: bqr_objects
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -57,14 +152,14 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: r
-  name: bq
+  name: directors_csv
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - format_dates
-  uuid: bq
+  - prep_directors
+  uuid: directors_csv
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
