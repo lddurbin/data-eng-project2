@@ -38,7 +38,7 @@ default:
   DUCKDB_SCHEMA: main
   # Google
   GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/centered-center-420605-4ebabe82bb10.json"
-  GOOGLE_LOCATION: US # Optional
+  GOOGLE_LOCATION: australia-southeast2 # Optional
   # MongoDB
   # Specify either the connection string or the (host, password, user, port) to connect to MongoDB.
   MONGODB_CONNECTION_STRING: "mongodb://{username}:{password}@{host}:{port}/"

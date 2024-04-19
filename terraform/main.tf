@@ -68,6 +68,6 @@ resource "google_storage_bucket" "demo-bucket" {
 
 
 resource "google_bigquery_dataset" "demo_dataset" {
-  dataset_id = "met_museum_objects_sample"
+  dataset_id = "met_museum"
   location   = var.bq_location
 }
