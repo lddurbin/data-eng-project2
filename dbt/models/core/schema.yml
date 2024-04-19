@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_directors
+    description: >
+      List of Directors of the Met Museum since its founding up to April 2024.
+    columns:
+      - name: name
+        description: The name of the Director
+      - name: term
+        description: The period  of the Director's tenure
+      - name: notes
+        description: Brief professional biography of the Director
+      - name: term_start
+        description: The date when the Director's tenure began, anchored to the 1st of January of that year.
+      - name: term_end
+        description: The date when the Director's tenure ended, anchored to the 1st of January of that year.
