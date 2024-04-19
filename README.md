@@ -82,7 +82,7 @@ Now we can move to [dbt Cloud](https://cloud.getdbt.com/) to execute our models,
 
 If all goes well, you should have a new dataset in BigQuery with four new tables and a view. Below you can see the DAG in its entirety:
 
-![The DAG in dbt](dbt_dag.png "dbt DAG")
+![The DAG in dbt](dbt-dag.png "dbt DAG")
 
 ## Dashboard
 
